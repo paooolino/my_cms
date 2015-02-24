@@ -29,10 +29,30 @@ require_once( ABSPATH . 'mycms-includes/functions.php' );
 
 
 
+// database check
+require_once( ABSPATH . 'mycms-includes/database.php' );
+$DB = new MyCMS_DB();
+
+if( !$DB->check_db_connection() ) {
+	die("A database connection could not be estabilished.");
+}
+if( !$DB->check_db_tables() ) {
+	$DB->create_db_tables();
+}
+
+
 
 // getting request
-$home_url = str_replace("index.php", "", $_SERVER["PHP_SELF"]);
-$request = str_replace( get_home_url(), "", $_SERVER["REQUEST_URI"] );
+$home_url = str_replace( "index.php", "", $_SERVER["PHP_SELF"] );
+$request = str_replace( $home_url, "", $_SERVER["REQUEST_URI"] );
+
+// creating query infos
+require_once( ABSPATH . 'mycms-includes/query.php' );
+$THE_QUERY = new MyCMS_Query($request);
+print_r( $THE_QUERY->get_query_data() );
+
+// display
+
 
 
 
