@@ -24,3 +24,15 @@ if ( file_exists( ABSPATH . 'mycms-config.php') ) {
 	die("A config file doesn't exist!");
 	
 }
+
+require_once( ABSPATH . 'mycms-includes/functions.php' );
+
+
+
+
+// getting request
+$home_url = str_replace("index.php", "", $_SERVER["PHP_SELF"]);
+$request = str_replace( get_home_url(), "", $_SERVER["REQUEST_URI"] );
+
+
+
