@@ -28,6 +28,10 @@ if ( file_exists( ABSPATH . 'mycms-config.php') ) {
 require_once( ABSPATH . 'mycms-includes/functions.php' );
 
 
+// debug mode
+ini_set( 'display_errors', 1 );
+
+
 
 // database check
 require_once( ABSPATH . 'mycms-includes/database.php' );
@@ -44,15 +48,14 @@ if( !$DB->check_db_tables() ) {
 
 // getting request
 $home_url = str_replace( "index.php", "", $_SERVER["PHP_SELF"] );
-$request = str_replace( $home_url, "", $_SERVER["REQUEST_URI"] );
+$request = rtrim(str_replace( $home_url, "", $_SERVER["REQUEST_URI"] ), '/');
 
 // creating query infos
 require_once( ABSPATH . 'mycms-includes/query.php' );
-$THE_QUERY = new MyCMS_Query($request);
-print_r( $THE_QUERY->get_query_data() );
+$the_query = new MyCMS_Query($request);
 
 // display
-
+require_once( ABSPATH . 'themes/default/' . $the_query->template . '.php' );
 
 
 

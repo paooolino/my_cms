@@ -38,9 +38,7 @@ class MyCMS_DB {
 		try {
 			$stmt = $this->db->prepare($query);
 			$stmt->execute($data);
-			return array(
-				"result" => $stmt->fetchAll(PDO::FETCH_ASSOC)
-			);
+			return $stmt->fetchAll(PDO::FETCH_ASSOC);			
 		} catch(PDOException $ex) {
 			//
 		}
