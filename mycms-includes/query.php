@@ -59,5 +59,9 @@ class MyCMS_Query {
 	public function get_title() {
 		return $this->the_query[0]["page_title"];
 	}
+    
+	public function get_permalink() {
+		return $this->the_query[0]["page_title"];
+	}
 	
 }

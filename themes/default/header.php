@@ -3,4 +3,6 @@
 <head>
 </head>
 <body>
-    <div class="header">header</div>
+    <div class="header">
+        <?php nav_menu(); ?>
+    </div>
