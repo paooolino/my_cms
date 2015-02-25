@@ -28,8 +28,13 @@ class MyCMS_Query {
 		$this->template = "404";
 		
 		$parts = explode("/", $request);
-
+        
 		if( count($parts) == 1 ) {
+            
+            if( $parts[0] == "" ) {
+                // home page
+                $this->template = "home";              
+            }
 		
 			// check for a page with that slug
 			$query = "SELECT * FROM pages 

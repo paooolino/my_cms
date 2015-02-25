@@ -55,7 +55,8 @@ require_once( ABSPATH . 'mycms-includes/query.php' );
 $the_query = new MyCMS_Query($request);
 
 // display
-require_once( ABSPATH . 'themes/default/' . $the_query->template . '.php' );
+define( 'THEME_NAME', 'default' );
+require_once( ABSPATH . 'themes/'. THEME_NAME .'/' . $the_query->template . '.php' );
 
 
 
